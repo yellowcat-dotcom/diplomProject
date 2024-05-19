@@ -1,0 +1,41 @@
+{% extends 'file_sharing/base.html' %}
+{% load static %}
+
+{% block content %}
+<table class="image-listik">
+    <tr>
+        <td>
+            <h2>Канал ФКТиПМ на YouTube  </h2>
+        </td>
+        <td>
+            <a href="https://www.youtube.com/@fktipm" target="_blank" rel="nofollow">
+                <img src="{% static 'file_sharing/images/youtube.ico' %}" alt="YouTube Icon">
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h2>Группа ФКТиПМ в ВКонтакте  </h2>
+        </td>
+        <td>
+            <a href="https://vk.com/fktipm_kubsu" target="_blank" rel="nofollow">
+                <img src="{% static 'file_sharing/images/VK.ico' %}" alt="VK Icon">
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h2>Сайт КубГУ  </h2>
+        </td>
+        <td>
+            <a href="https://kubsu.ru/" target="_blank" rel="nofollow">
+                <img src="{% static 'file_sharing/images/kubgu.png' %}" alt="VK Icon">
+            </a>
+        </td>
+    </tr>
+</table>
+
+
+
+{% endblock %}
+

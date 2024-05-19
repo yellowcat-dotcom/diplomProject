@@ -1,0 +1,5 @@
+Django==3.2.10
+psycopg2-binary==2.9.1
+django-simple-captcha
+transliterate
+django-debug-toolbar
