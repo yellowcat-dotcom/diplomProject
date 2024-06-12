@@ -6,49 +6,47 @@
 {% block content %}
 <h1>{{post.teacher}} - {{post.discipline}}</h1>
 
-{% for file in post.files.all %}
-	<a href="{{ file.file.url }}" download="{% if file.name %}{{ file.name }}{% else %}file{% endif %}">
-        {% if file.file.name|file_extension %}
-
-            {% if file.file.name|file_extension == '.pdf'  %}
-                <img src="{% static 'file_sharing/images/Pdf.ico' %}" alt="PDF Icon">
-			{% endif %}
-
-			{% if file.file.name|file_extension == '.rar'  %}
-				<img src="{% static 'file_sharing/images/rar.ico' %}" alt="RAR Icon">
-			{% endif %}
-
-			{% if file.file.name|file_extension == '.doc' or file.file.name|file_extension == '.docx' %}
-				<img src="{% static 'file_sharing/images/word.ico' %}" alt="Word Icon">
-            {% endif %}
-
-			{% if file.file.name|file_extension == '.xls' or file.file.name|file_extension == '.xlsx' %}
-				<img src="{% static 'file_sharing/images/word.ico' %}" alt="Excel Icon">
-            {% endif %}
-
-			{% if file.file.name|file_extension == '.pptx' %}
-				<img src="{% static 'file_sharing/images/powerpoint.ico' %}" alt="Powerpoint Icon">
-            {% endif %}
-
-			{% if file.file.name|file_extension == '.jpg' or file.file.name|file_extension == '.jpeg' or file.file.name|file_extension == '.png' or file.file.name|file_extension == '.jfif' %}
-				<img src="{% static 'file_sharing/images/image.ico' %}" alt="Image Icon">
-            {% endif %}
-
-			{% if file.file.name|file_extension == '.txt'  %}
-				<img src="{% static 'file_sharing/images/txt.ico' %}" alt="Txt Icon">
-            {% endif %}
-
-        {% endif %}
-	</a>
-		<div class="file-name">
-            {% if file.name %}
-                {{ file.name }}
-            {% else %}
-                {{ file.file.name|filename }}
-            {% endif %}
-        </div>
-{% endfor %}
-
-
 {{post.description|linebreaks}}
+
+<div class="file-container">
+                {% for file in post.files.all %}
+                    <div class="file-block">
+                        <a href="{{ file.file.url }}" download="{% if file.name %}{{ file.name }}{% else %}file{% endif %}">
+                            {% if file.file.name|file_extension %}
+                                {% if file.file.name|file_extension == '.pdf' %}
+                                    <img src="{% static 'file_sharing/images/Pdf.ico' %}" alt="PDF Icon">
+                                {% endif %}
+                                {% if file.file.name|file_extension == '.doc' or file.file.name|file_extension == '.docx' %}
+                                    <img src="{% static 'file_sharing/images/word.ico' %}" alt="Word Icon">
+                                {% endif %}
+                                {% if file.file.name|file_extension == '.xls' or file.file.name|file_extension == '.xlsx' %}
+                                    <img src="{% static 'file_sharing/images/excel.ico' %}" alt="Excel Icon">
+                                {% endif %}
+                                {% if file.file.name|file_extension == '.rar' %}
+                                    <img src="{% static 'file_sharing/images/rar.ico' %}" alt="RAR Icon">
+                                {% endif %}
+                                {% if file.file.name|file_extension == '.pptx' %}
+                                    <img src="{% static 'file_sharing/images/powerpoint.ico' %}" alt="Powerpoint Icon">
+                                {% endif %}
+                                {% if file.file.name|file_extension == '.jpg' or file.file.name|file_extension == '.jpeg' or file.file.name|file_extension == '.png' or file.file.name|file_extension == '.jfif' %}
+                                    <img src="{% static 'file_sharing/images/image.ico' %}" alt="Image Icon">
+                                {% endif %}
+                                {% if file.file.name|file_extension == '.txt' %}
+                                    <img src="{% static 'file_sharing/images/txt.ico' %}" alt="Txt Icon">
+                                {% endif %}
+                            {% endif %}
+                        </a>
+                        <div class="file-name">
+                            {% if file.name %}
+                                {{ file.name }}
+                            {% else %}
+                                {{ file.file.name|filename }}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+
+
 {% endblock %}

@@ -14,15 +14,24 @@ class DataMixin:
     def get_user_context(self, **kwargs):
 
         context = kwargs
+# без кеширования
+        # if self.request.user.is_authenticated:
+        #     user = self.request.user
+        #     records = Record.objects.filter(group=user.group)
+        #     discipline_ids = records.values_list('discipline',
+        #                                          flat=True).distinct()
+        #     disciplines = Discipline.objects.filter(pk__in=discipline_ids)
+        # else:
+        #     disciplines = Discipline.objects.all()
+# конец
 
-        if self.request.user.is_authenticated:
-            user = self.request.user
-            records = Record.objects.filter(group=user.group)
-            discipline_ids = records.values_list('discipline',
-                                                 flat=True).distinct()
-            disciplines = Discipline.objects.filter(pk__in=discipline_ids)
-        else:
+
+# переключение на кеширование
+        disciplines = cache.get('disciplines')
+        if not disciplines:
             disciplines = Discipline.objects.all()
+            cache.set('disciplines', disciplines, 60)
+# конец
 
         context['menu'] = menu
         context['disciplines'] = disciplines
