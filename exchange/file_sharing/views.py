@@ -33,7 +33,7 @@ class RecordHome(DataMixin, ListView):
 
 
 def about(request):
-    return render(request, 'file_sharing/about.html', {'menu': menu, 'title': 'О сайте'})
+    return render(request, 'file_sharing/about.html', {'menu': menu, 'title': 'О проекте'})
 
 
 # def addpage(request):
